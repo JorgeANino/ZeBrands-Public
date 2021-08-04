@@ -1,0 +1,17 @@
+*.pyc
+.idea/
+.env
+.bash_history
+.cache/
+.ipython/
+.coverage*
+!.coveragerc
+.local/
+.mypy_cache/
+.pytest_cache/
+.python_history
+htmlcov/
+*.ipynb
+.DS_Store
+_*/
+docker-compose-deploy.yml

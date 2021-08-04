@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "53711832-3360-41ca-9a8e-5837c7b0238f",
+		"name": "Zebrands Backend Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/healthz",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"healthz"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Token (Login)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "jorgebackendtest@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/token/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refresh",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyODE4OTEyNiwianRpIjoiNDlhMDUyOGZiYzY4NDE4Y2FkZjMwOTNhMzNkYjA2YjAiLCJ1c2VyX2lkIjoyfQ.hzRvCqxN-BIdKGtU-o3WK2B908wzlEZuYv8y3UUHGYc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refresh",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyODE4OTEyNiwianRpIjoiNDlhMDUyOGZiYzY4NDE4Y2FkZjMwOTNhMzNkYjA2YjAiLCJ1c2VyX2lkIjoyfQ.hzRvCqxN-BIdKGtU-o3WK2B908wzlEZuYv8y3UUHGYc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/logout/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"logout",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4MTA0MjM5LCJqdGkiOiJmZTA5OThhZDhlYjQ0ZDMxOWYyZDZjNTQyNDVjZjMzMiIsInVzZXJfaWQiOjJ9.j-XM1j4ipy3kZmu-Ay6asGbC4McEfzrPrvQpKOj457g",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/36b6b568-c39c-4af0-9fc1-f8e2fa9ee179/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"product",
+						"36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4MTkyOTE4LCJqdGkiOiI3NzM2ODNlNGM0NWY0NTA4YTFmZTMwYTI3M2I2YjdjZCIsInVzZXJfaWQiOjJ9.c_h9nrxJy7umasJ7wqC3dG5ZLX2z6fIS5AighwEHNf4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sku\": \"123A\",\n    \"name\": \"Test Name\",\n    \"price\": 123.25,\n    \"brand\": \"ZeBrands\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"product",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4MTkxMTg1LCJqdGkiOiIxYWU3YWNmOTFmNmQ0ZDRiYmViM2JmYTA2YjZkOTllYiIsInVzZXJfaWQiOjJ9.BkIEbgBcPYjVuyeIRN1cKTBhnoGdh28CpWzx9ciWPxo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "sku",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Test Name2",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "123.26",
+							"type": "text"
+						},
+						{
+							"key": "brand",
+							"value": "ZeBrandss",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/36b6b568-c39c-4af0-9fc1-f8e2fa9ee179/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"product",
+						"36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partially Update Product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sku\": \"123C\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/36b6b568-c39c-4af0-9fc1-f8e2fa9ee179/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"product",
+						"36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/36b6b568-c39c-4af0-9fc1-f8e2fa9ee179/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"product",
+						"36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Superuser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Test Name\",\n    \"last_name\": \"Test Last\",\n    \"password\": \"test123456\",\n    \"email\": \"test@zebrands.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Superusers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Superuser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/3/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Superuser",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4MTkxMTg1LCJqdGkiOiIxYWU3YWNmOTFmNmQ0ZDRiYmViM2JmYTA2YjZkOTllYiIsInVzZXJfaWQiOjJ9.BkIEbgBcPYjVuyeIRN1cKTBhnoGdh28CpWzx9ciWPxo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/3/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Superuser",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4MTkxMTg1LCJqdGkiOiIxYWU3YWNmOTFmNmQ0ZDRiYmViM2JmYTA2YjZkOTllYiIsInVzZXJfaWQiOjJ9.BkIEbgBcPYjVuyeIRN1cKTBhnoGdh28CpWzx9ciWPxo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Test Name2\",\n    \"last_name\": \"Test Last2\",\n    \"password\": \"test1234567\",\n    \"email\": \"test2@zebrands.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/4/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"4",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partially Update Superuser",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4MTkxMTg1LCJqdGkiOiIxYWU3YWNmOTFmNmQ0ZDRiYmViM2JmYTA2YjZkOTllYiIsInVzZXJfaWQiOjJ9.BkIEbgBcPYjVuyeIRN1cKTBhnoGdh28CpWzx9ciWPxo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Test Name3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/4/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"4",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI4MTkyOTE4LCJqdGkiOiI3NzM2ODNlNGM0NWY0NTA4YTFmZTMwYTI3M2I2YjdjZCIsInVzZXJfaWQiOjJ9.c_h9nrxJy7umasJ7wqC3dG5ZLX2z6fIS5AighwEHNf4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/me/",
+					"protocol": "http",
+					"host": [
+						"ec2-3-129-17-89",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"user",
+						"me",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

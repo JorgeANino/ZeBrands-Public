@@ -1,0 +1,61 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+      - ./data/web:/vol/web
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DEBUG=${DEBUG:-True}
+      - APP_LOGGING_LEVEL=${APP_LOGGING_LEVEL:-INFO}
+      - DB_LOGGING_LEVEL=${DB_LOGGING_LEVEL:-INFO}
+      - DJANGO_SETTINGS_MODULE=app.settings
+      - APP=app
+      - QUEUES=celery
+      - PYTHONDONTWRITEBYTECODE=1
+      # forwarded from the host if they exist
+      - UPDATE_PYTHON_REQUIREMENTS_ON_CONTAINERSTART
+    depends_on:
+      - postgres
+      - redis
+  postgres:
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+  testdb:
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=testdb
+      - POSTGRES_USER=testdb
+      - POSTGRES_PASSWORD=testdb
+    ports:
+      - 5433:5432
+  redis:
+    image: redis:5.0.7-alpine
+    volumes:
+      - redis-data:/data
+volumes:
+  postgres-data:
+  redis-data:
+  static-data:

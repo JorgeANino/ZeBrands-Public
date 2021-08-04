@@ -1,0 +1,5 @@
+Catalog System
+The product with SKU {{product.sku}} has been updated.
+{{product.name}}
+{{product.price}}
+{{product.brand}}
