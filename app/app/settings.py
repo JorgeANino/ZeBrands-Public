@@ -193,8 +193,8 @@ VCR_RECORD_MODE = getenv("VCR_RECORD_MODE", default="once")
 
 DOMAIN = getenv("DOMAIN", default="http://localhost:3000")
 
-AWS_ACCESS_KEY_ID = (getenv("AWS_ACCESS_KEY_ID"),)
-AWS_SECRET_ACCESS_KEY = getenv("AWS_SECRET_ACCESS_KEY")
+AWS_ACCESS_KEY_ID = getenv("AWS_ACCESS_KEY_ID", default=None)
+AWS_SECRET_ACCESS_KEY = getenv("AWS_SECRET_ACCESS_KEY", default=None)
 
 EMAIL_BACKEND = "django_ses.SESBackend"
 # EMAIL_HOST = "smtpout.secureserver.net"
