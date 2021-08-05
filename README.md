@@ -38,11 +38,12 @@ Note: This admin should be used in order to create new admins.
 
   * **Code:** 200 OK<br />
     **Content:**
-    
+      ```
       {
       "refresh": "TestToken",
       "access": "TestToken"
       }
+      ```
     
  
 * **Error Response:**
@@ -51,12 +52,12 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "No active account found with the given credentials." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.post('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/token/',
     {"email": "test_email@test.com", "password": "Test1234"},
     {headers: { Authorization: `Bearer ${token}`}});
-  
+  ```
 
 
 **Refresh token**
@@ -79,29 +80,33 @@ Note: This admin should be used in order to create new admins.
 
   * **Code:** 200 OK<br />
     **Content:**
-    
+    ```
     {
       "refresh": "TestToken",
       "access": "TestToken"
     }
+    ```
     
  
 * **Error Response:**
 
   * **Code:** 401 UNAUTHORIZED <br />
     **Content:** 
-    
+      ```
       {
           "detail": "Token is invalid or expired",
           "code": "token_not_valid"
       }
+      ```
     
 
 * **Sample Call:**
 
+  ```
   axios
     axios.post('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/token/',
     {"refresh": "TestToken"});
+  ```
   
 
 **Get Products**
@@ -124,8 +129,8 @@ Note: This admin should be used in order to create new admins.
 
   * **Code:** 200 OK<br />
     **Content:**
-    
-      [
+    ```
+    [
         {
             "id": "36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
             "created_at": "2021-08-04T19:09:06.248501Z",
@@ -136,6 +141,7 @@ Note: This admin should be used in order to create new admins.
             "brand": "ZeBrands"
         }
     ]
+    ```
     
  
 * **Error Response:**
@@ -144,9 +150,10 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.get('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/', {headers: { Authorization: `Bearer ${token}`}});
+  ```
   
 **Get Product**
 ----
@@ -168,7 +175,7 @@ Note: This admin should be used in order to create new admins.
 
   * **Code:** 200 OK<br />
     **Content:**
-    
+    ```
     {
         "id": "36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
         "created_at": "2021-08-04T19:09:06.248501Z",
@@ -178,6 +185,7 @@ Note: This admin should be used in order to create new admins.
         "price": 123.25,
         "brand": "ZeBrands"
     }
+    ```
     
  
 * **Error Response:**
@@ -186,10 +194,10 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.get('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/36b6b568-c39c-4af0-9fc1-f8e2fa9ee179/', {headers: { Authorization: `Bearer ${token}`}});
-  
+  ```
 
 **Create Product**
 ----
@@ -214,20 +222,21 @@ Note: This admin should be used in order to create new admins.
   * brand (str) Brand of the product
 
 * **Example body:**
-
-{
-    "sku": "123A",
-    "name": "Test Name",
-    "price": 123.25,
-    "brand": "ZeBrands"
-}
+  ```
+    {
+        "sku": "123A",
+        "name": "Test Name",
+        "price": 123.25,
+        "brand": "ZeBrands"
+    }
+  ```
 
 
 * **Success Response:**
 
   * **Code:** 201 CREATED<br />
     **Content:**
-    
+    ```
     {
         "id":"302b6cb9-4a02-46e9-a4b3-7f9e7a9c9b02","created_at":"2021-08-04T19:48:47.515490Z","updated_at":"2021-08-04T19:48:47.515517Z",
         "sku":"123A",
@@ -235,6 +244,7 @@ Note: This admin should be used in order to create new admins.
         "price":123.25,
         "brand":"ZeBrands"
     }
+    ```
     
  
 * **Error Response:**
@@ -245,7 +255,7 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ name : ["This field is required."] }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.post(" http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/", 
         {
@@ -257,6 +267,7 @@ Note: This admin should be used in order to create new admins.
         {
           headers: { Authorization: `Bearer ${token}` },
         });
+  ```
   
 
 **Delete Product**
@@ -285,11 +296,12 @@ Note: This admin should be used in order to create new admins.
       **Content:**`{ detail : "Not found." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.delete(`http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/023ab351-8627-45f0-9497-47c34a97efbd/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
+  ```
   
 **Update product**
 ----
@@ -316,40 +328,41 @@ Note: This admin should be used in order to create new admins.
   * brand (str) Brand of the product
 
 * **Example body:**
-
-{
-    "sku": "123B",
-    "name": "Test Name",
-    "price": 123.25,
-    "brand": "ZeBrands"
-}
-
-* **Success Response:**
-
-  * **Code:** 200 OK<br />
-    **Content:**
-    
+  ```
     {
-        "id": "36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
-        "created_at": "2021-08-04T19:09:06.248501Z",
-        "updated_at": "2021-08-04T19:09:06.248525Z",
         "sku": "123B",
         "name": "Test Name",
         "price": 123.25,
         "brand": "ZeBrands"
     }
+  ```
+
+* **Success Response:**
+
+  * **Code:** 200 OK<br />
+    **Content:**
+    ```
+    {
+      "id": "36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
+      "created_at": "2021-08-04T19:09:06.248501Z",
+      "updated_at": "2021-08-04T19:09:06.248525Z",
+      "sku": "123B",
+      "name": "Test Name",
+      "price": 123.25,
+      "brand": "ZeBrands"
+    }
+    ```
     
- 
 * **Error Response:**
 
   * **Code:** 401 UNAUTHORIZED <br />
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.put('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/36b6b568-c39c-4af0-9fc1-f8e2fa9ee179/', {headers: { Authorization: `Bearer ${token}`}});
-
+  ```
 
 **Partially update product**
 ----
@@ -388,7 +401,7 @@ Note: This admin should be used in order to create new admins.
 
   * **Code:** 200 OK<br />
     **Content:**
-    
+    ```
     {
         "id": "36b6b568-c39c-4af0-9fc1-f8e2fa9ee179",
         "created_at": "2021-08-04T19:09:06.248501Z",
@@ -398,6 +411,7 @@ Note: This admin should be used in order to create new admins.
         "price": 123.25,
         "brand": "ZeBrands"
     }
+    ```
     
  
 * **Error Response:**
@@ -406,10 +420,10 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.patch('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/product/36b6b568-c39c-4af0-9fc1-f8e2fa9ee179/', {headers: { Authorization: `Bearer ${token}`}});
-
+  ```
 
 **Get Superusers**
 ----
@@ -431,6 +445,7 @@ Note: This admin should be used in order to create new admins.
 
   * **Code:** 200 OK<br />
     **Content:**
+      ```
         [
             {
                 "id": 1,
@@ -469,6 +484,7 @@ Note: This admin should be used in order to create new admins.
                 ]
             }
         ]
+      ```
     
  
 * **Error Response:**
@@ -477,10 +493,10 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.get('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/', {headers: { Authorization: `Bearer ${token}`}});
-  
+  ```
 **Get Superuser**
 ----
   Returns json data of a superuser
@@ -501,7 +517,7 @@ Note: This admin should be used in order to create new admins.
 
   * **Code:** 200 OK<br />
     **Content:**
-    
+    ```
     {
         "id": 4,
         "email": "test2@zebrands.com",
@@ -514,6 +530,7 @@ Note: This admin should be used in order to create new admins.
             }
         ]
     }
+    ```
     
  
 * **Error Response:**
@@ -522,10 +539,10 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.get('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/4/', {headers: { Authorization: `Bearer ${token}`}});
-  
+  ```
 
 **Create Superuser**
 ----
@@ -550,20 +567,21 @@ Note: This admin should be used in order to create new admins.
   * pasword (str) Password of the superuser
 
 * **Example body:**
-
-{
-    "first_name": "Test Name",
-    "last_name": "Test Last",
-    "password": "test123456",
-    "email": "test@zebrands.com"
-}
+  ```
+    {
+      "first_name": "Test Name",
+      "last_name": "Test Last",
+      "password": "test123456",
+      "email": "test@zebrands.com"
+    }
+  ```
 
 
 * **Success Response:**
 
   * **Code:** 201 CREATED<br />
     **Content:**
-    
+    ```
     {
         "id": 4,
         "email": "test2@zebrands.com",
@@ -576,6 +594,7 @@ Note: This admin should be used in order to create new admins.
             }
         ]
     }
+    ```
  
 * **Error Response:**
 
@@ -585,7 +604,7 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ password : ["This field is required."] }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.post("http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/", 
         {
@@ -597,6 +616,7 @@ Note: This admin should be used in order to create new admins.
         {
           headers: { Authorization: `Bearer ${token}` },
         });
+  ```
   
 
 **Delete Superuser**
@@ -625,11 +645,12 @@ Note: This admin should be used in order to create new admins.
       **Content:**`{ detail : "Not found." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.delete(`http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/4/`, {
         headers: { Authorization: `Bearer ${token}` },
       })
+  ```
   
 
 **Update Superuser**
@@ -657,20 +678,21 @@ Note: This admin should be used in order to create new admins.
   * pasword (str) Password of the superuser
 
 * **Example body:**
-
-{
+  ```
+  {
     "first_name": "Test Name",
     "last_name": "Test Last",
     "password": "test123456",
     "email": "test@zebrands.com"
-}
+  }
+  ```
 
 
 * **Success Response:**
 
   * **Code:** 200 OK<br />
     **Content:**
-    
+      ```
         {
             "id": 4,
             "email": "test2@zebrands.com",
@@ -683,6 +705,7 @@ Note: This admin should be used in order to create new admins.
                 }
             ]
         }
+      ```
  
 * **Error Response:**
 
@@ -690,10 +713,10 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.put('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/4/', {headers: { Authorization: `Bearer ${token}`}});
-
+  ```
 
 **Partially Update Superuser**
 ----
@@ -723,16 +746,16 @@ Note: This admin should be used in order to create new admins.
   * pasword (str) Password of the superuser
 
 * **Example body:**
-
-{
-    "first_name": "Test Name3"
-}
-
+  ```
+  {
+      "first_name": "Test Name3"
+  }
+  ```
 * **Success Response:**
 
   * **Code:** 200 OK<br />
     **Content:**
-    
+      ```
         {
             "id": 4,
             "email": "test2@zebrands.com",
@@ -745,6 +768,7 @@ Note: This admin should be used in order to create new admins.
                 }
             ]
         }
+      ```
     
  
 * **Error Response:**
@@ -753,10 +777,10 @@ Note: This admin should be used in order to create new admins.
     **Content:**`{ detail : "Authentication credentials were not provided." }`
 
 * **Sample Call:**
-
+  ```
   axios
     axios.patch('http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/4/', {headers: { Authorization: `Bearer ${token}`}});
-
+  ```
 
 **Retrieve me**
 ----
@@ -779,7 +803,7 @@ Note: This admin should be used in order to create new admins.
 
   * ***Code:*** 200 OK<br />
     **Content:** 
-    
+    ```
     {
         "id": 1,
         "email": "admin@zebrands.com",
@@ -792,6 +816,7 @@ Note: This admin should be used in order to create new admins.
             }
         ]
     }
+    ```
     
  
 * ***Error Response:***
@@ -801,11 +826,12 @@ Note: This admin should be used in order to create new admins.
 
 * ***Sample Call:***
 
+  ```
   axios
       axios.get("http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/me/", {
           headers: { Authorization: `Bearer ${token}` },
         });
-  
+  ```
 
 
 **Blacklist token (Logout)**
@@ -828,11 +854,11 @@ Note: This admin should be used in order to create new admins.
   * refresh: Refresh token to be blacklisted
 
 * ***Example body:***
-
-{
-    "refresh": "Testtoken"
-}
-
+  ```
+  {
+      "refresh": "Testtoken"
+  }
+  ```
 
 * ***Success Response:***
 
@@ -843,7 +869,7 @@ Note: This admin should be used in order to create new admins.
   * ***Code:*** 400 BAD REQUEST
 
 * ***Sample Call:***
-
+  ```
   axios
     axios.post("http://ec2-3-129-17-89.us-east-2.compute.amazonaws.com/user/logout/", {
       refresh: "testRefresh",
