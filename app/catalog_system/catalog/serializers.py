@@ -12,9 +12,9 @@ class ProductSerializer(CatalogSystemSerializer):
     price = serializers.FloatField()
     brand = serializers.CharField(required=True, max_length=255)
 
-    def create(self, validated_menu_option):
+    def create(self, validated_product):
         """Creates product object"""
-        return create_product(**validated_menu_option)
+        return create_product(**validated_product)
 
     def update(self, product_instance, validated_data):
         """Updates product object"""
