@@ -9,6 +9,14 @@
 
 * An architecture proposal was added inside the zebrands folder.
 
+### Run tests
+
+* docker-compose -f docker-compose.yml run --rm app sh -c "pytest"
+
+### Connect to AWS EC2 
+
+* ssh -i /path/my-key-pair.pem my-instance-user-name@my-instance-public-dns-name
+
 ### Created admin credentials
 
 Note: This admin should be used in order to create new admins.
